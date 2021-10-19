@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TextField, Button } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
+import { MyField } from './MyField';
 
 interface Values {
   firstName: string;
@@ -19,20 +20,37 @@ export const MyForm: React.FC<Props> = ({onSubmit}) => {
       onSubmit={values => {
         onSubmit(values)
       }}>
-      {({ values, handleChange, handleBlur }) => (
+      {({ values }) => (
         <Form>
-          <div>
-            <Field name="firstName" placeholder="First Name" />
-            <Field name="lastName" placeholder="Last Name" />
-            <Field name="email" placeholder="Email" />
-
+            <div>
+              <Field
+                name="firstName"
+                placeholder="First Name"
+                component={MyField}
+             />
+            </div>
+            <div>
+              <Field
+                name="lastName"
+                placeholder="Last Name"
+                component={MyField}
+              />
+            </div>
+            <div>
+              <Field
+                name="email"
+                placeholder="Email"
+                component={MyField}
+                />
+            </div>
+            {/* <div>
             <TextField
             name="firstName"
             placeholder="firstName"
             value={values.firstName}
             onChange={handleChange}
             onBlur={handleBlur}
-          />
+            />
           </div>
           <div>
             <TextField
@@ -51,7 +69,7 @@ export const MyForm: React.FC<Props> = ({onSubmit}) => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          </div>
+          </div> */}
           <Button type="submit">Submit</Button>
           <pre>
             {JSON.stringify(values, null, 2)}
