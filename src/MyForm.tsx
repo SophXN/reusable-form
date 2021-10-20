@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextField, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import { MyField } from './MyField';
 
@@ -9,7 +9,7 @@ interface Values {
   email: string;
 }
 interface Props {
-  // All the types we will accept as parameters
+
   onSubmit: (values: Values) => void;
 }
 
@@ -17,8 +17,9 @@ export const MyForm: React.FC<Props> = ({onSubmit}) => {
   return (
     <Formik
       initialValues={{firstName: '', lastName: '', email: ''}}
-      onSubmit={values => {
-        onSubmit(values)
+      onSubmit={(values, {resetForm}) => {
+        onSubmit(values);
+        resetForm();
       }}>
       {({ values }) => (
         <Form>
