@@ -20,6 +20,7 @@ interface Props {
 export function MyTable({rows}: Props) {
 
   return (
+    <div>
     <Paper>
       <Table>
         <TableHead>
@@ -42,5 +43,6 @@ export function MyTable({rows}: Props) {
         </TableBody>
       </Table>
     </Paper>
+    </div>
   );
 }
